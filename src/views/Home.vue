@@ -1,32 +1,42 @@
 <template>
   <div class="home">
-    <v-card class="ma-10">
-      <v-card-title class="pt-5">
-        <div>The Library</div>
-        <v-spacer></v-spacer>
-        <v-text-field
-          v-model="search"
-          label="Search by Name or Description"
-          outlined
-          rounded
-        ></v-text-field>
-        <v-btn fab depressed>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-select
-          :items="categories"
-          label="Outlined style"
-          outlined
-        ></v-select>
-      </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="itemsList"
-        :items-per-page="10"
-        class="elevation-5"
-      ></v-data-table>
-    </v-card>
+    <v-container class="my-10">
+      <v-card class="pa-8">
+        <v-layout row wrap justify-space-around>
+          <v-flex md2>
+            <div class="mt-4 ml-10">The Library</div>
+          </v-flex>
+          <v-flex md4>
+            <v-text-field
+              v-model="search"
+              label="Search by Name or Description"
+              outlined
+              rounded
+            ></v-text-field>
+          </v-flex>
+          <v-flex md2>
+            <v-btn class="mx-2" outlined fab color="grey">
+              <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+          </v-flex>
+          <v-flex md4>
+            <v-select
+              :items="categories"
+              label="Outlined style"
+              outlined
+            ></v-select>
+          </v-flex>
+          <v-flex md12>
+            <v-data-table
+              :headers="headers"
+              :items="itemsList"
+              :items-per-page="5"
+              class="elevation-5"
+            ></v-data-table>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
