@@ -1,6 +1,32 @@
 <template>
   <div class="home">
-    <h1>Home page</h1>
+    <v-card class="ma-10">
+      <v-card-title class="pt-5">
+        <div>The Library</div>
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="search"
+          label="Search by Name or Description"
+          outlined
+          rounded
+        ></v-text-field>
+        <v-btn fab depressed>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-select
+          :items="categories"
+          label="Outlined style"
+          outlined
+        ></v-select>
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :items="itemsList"
+        :items-per-page="10"
+        class="elevation-5"
+      ></v-data-table>
+    </v-card>
   </div>
 </template>
 
@@ -10,6 +36,13 @@ export default {
   components: {},
   data() {
     return {
+      search: "",
+      headers: [
+        { text: "Code", value: "itemCode" },
+        { text: "Name", value: "itemName" },
+        { text: "Description", value: "itemDescription" },
+        { text: "Category", value: "itemCategory" }
+      ],
       itemsList: [
         {
           itemCode: "1",
@@ -35,7 +68,8 @@ export default {
           itemDescription: "How to use an aid kit",
           itemCategory: "Others"
         }
-      ]
+      ],
+      categories: ["All", "Books", "Magazines", "Newspapers", "Others"]
     };
   }
 };
