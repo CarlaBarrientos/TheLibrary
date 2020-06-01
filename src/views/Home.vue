@@ -9,27 +9,23 @@
           <v-flex md4>
             <v-text-field
               v-model="search"
+              append-icon="mdi-magnify"
               label="Search by Name or Description"
               outlined
               rounded
             ></v-text-field>
           </v-flex>
-          <v-flex md2>
-            <v-btn class="mx-2" outlined fab color="grey">
-              <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-          </v-flex>
           <v-flex md4>
             <v-select
               :items="categories"
-              label="Outlined style"
+              label="Filter by category"
               outlined
             ></v-select>
           </v-flex>
           <v-flex md12>
             <v-data-table
               :headers="headers"
-              :items="itemsList"
+              :items="filteredList"
               :items-per-page="5"
               class="elevation-5"
             ></v-data-table>
@@ -81,6 +77,17 @@ export default {
       ],
       categories: ["All", "Books", "Magazines", "Newspapers", "Others"]
     };
+  },
+  computed: {
+    filteredList() {
+      return this.search === ""
+        ? this.itemsList
+        : this.itemsList.filter(
+            item =>
+              item.itemName === this.search ||
+              item.itemDescription === this.search
+          );
+    }
   }
 };
 </script>
