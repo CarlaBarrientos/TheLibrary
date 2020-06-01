@@ -17,10 +17,12 @@
           </v-flex>
           <v-flex md4>
             <v-select
+              v-model="selectedCategory"
               :items="categories"
               label="Filter by category"
               outlined
-            ></v-select>
+            >
+            </v-select>
           </v-flex>
           <v-flex md12>
             <v-data-table
@@ -43,6 +45,7 @@ export default {
   data() {
     return {
       search: "",
+      selectedCategory: "",
       headers: [
         { text: "Code", value: "itemCode" },
         { text: "Name", value: "itemName" },
@@ -80,13 +83,33 @@ export default {
   },
   computed: {
     filteredList() {
-      return this.search === ""
-        ? this.itemsList
-        : this.itemsList.filter(
-            item =>
-              item.itemName === this.search ||
-              item.itemDescription === this.search
-          );
+      if (this.search !== "" && this.selectedCategory === "") {
+        return this.itemsList.filter(
+          item =>
+            item.itemName === this.search ||
+            item.itemDescription === this.search
+        );
+      } else if (this.search === "" && this.selectedCategory !== "") {
+        if (this.selectedCategory === "All") {
+          return this.itemsList;
+        }
+        return this.itemsList.filter(
+          item => item.itemCategory === this.selectedCategory
+        );
+      } else if (this.search !== "" && this.selectedCategory !== "") {
+        return this.itemsList.filter(
+          item =>
+            item.itemCategory === this.selectedCategory &&
+            (item.itemName === this.search ||
+              item.itemDescription === this.search)
+        );
+      }
+      return this.itemsList;
+    }
+  },
+  methods: {
+    save() {
+      console.log("resultado:" + this.selectedCategory + " " + this.search);
     }
   }
 };
