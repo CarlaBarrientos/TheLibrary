@@ -1,13 +1,19 @@
 <template>
   <div class="home">
     <v-container class="my-10">
-      <v-card class="pa-8">
+      <v-card class="pa-8" color="#CDCDC0" outlined>
         <v-layout row wrap justify-space-around>
           <v-flex md2>
-            <div class="mt-4 ml-10">The Library</div>
+            <div
+              class="mt-3 ml-3 brown--text headline font-italic font-weight-bold"
+            >
+              The Library
+            </div>
           </v-flex>
           <v-flex md4>
             <v-text-field
+              background-color="#86807D"
+              color="brown"
               v-model="search"
               append-icon="mdi-magnify"
               label="Search by Name or Description"
@@ -17,6 +23,8 @@
           </v-flex>
           <v-flex md4>
             <v-select
+              background-color="#86807D"
+              color="brown"
               v-model="selectedCategory"
               :items="categories"
               label="Filter by category"
@@ -29,7 +37,7 @@
               :headers="headers"
               :items="filteredList"
               :items-per-page="5"
-              class="elevation-5"
+              class="elevation-5 brown--text"
             ></v-data-table>
           </v-flex>
         </v-layout>
@@ -89,11 +97,7 @@ export default {
       }
       return this.itemsList;
     }
-  },
-  methods: {
-    save() {
-      console.log("resultado:" + this.selectedCategory + " " + this.search);
-    }
   }
 };
 </script>
+<style scoped></style>
