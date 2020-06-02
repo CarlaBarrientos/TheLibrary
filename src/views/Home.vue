@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import data from "./data.json";
 export default {
   name: "Home",
   components: {},
@@ -52,32 +53,7 @@ export default {
         { text: "Description", value: "itemDescription" },
         { text: "Category", value: "itemCategory" }
       ],
-      itemsList: [
-        {
-          itemCode: "1",
-          itemName: "El Principito",
-          itemDescription: "The story of a child",
-          itemCategory: "Books"
-        },
-        {
-          itemCode: "2",
-          itemName: "Science",
-          itemDescription: "Magazine about science",
-          itemCategory: "Magazines"
-        },
-        {
-          itemCode: "3",
-          itemName: "Los Tiempos",
-          itemDescription: "Newspaper of may 31, 2020 ",
-          itemCategory: "Newspapers"
-        },
-        {
-          itemCode: "4",
-          itemName: "First aid kit user information",
-          itemDescription: "How to use an aid kit",
-          itemCategory: "Others"
-        }
-      ],
+      itemsList: data.items,
       categories: ["All", "Books", "Magazines", "Newspapers", "Others"]
     };
   },
@@ -97,6 +73,13 @@ export default {
           item => item.itemCategory === this.selectedCategory
         );
       } else if (this.search !== "" && this.selectedCategory !== "") {
+        if (this.selectedCategory === "All") {
+          return this.itemsList.filter(
+            item =>
+              item.itemName === this.search ||
+              item.itemDescription === this.search
+          );
+        }
         return this.itemsList.filter(
           item =>
             item.itemCategory === this.selectedCategory &&
