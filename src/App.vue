@@ -1,32 +1,25 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-content class="content">
+      <router-view />
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
-}
+  components: {},
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  data: () => ({
+    //
+  })
+};
+</script>
+<style scoped>
+.content {
+  background-image: url(https://img.freepik.com/foto-gratis/estanteria-borrosa-muchos-libros-antiguos-libreria-o-biblioteca_36051-477.jpg?size=626&ext=jpg);
+  background-size: cover;
 }
 </style>

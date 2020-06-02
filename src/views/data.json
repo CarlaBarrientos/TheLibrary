@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+          "itemCode": "001",
+          "itemName": "El Principito",
+          "itemDescription": "The story of a child",
+          "itemCategory": "Books"
+        },
+        {
+          "itemCode": "002",
+          "itemName": "Science",
+          "itemDescription": "Magazine about science",
+          "itemCategory": "Magazines"
+        },
+        {
+          "itemCode": "003",
+          "itemName": "Los Tiempos",
+          "itemDescription": "Newspaper of may 31, 2020 ",
+          "itemCategory": "Newspapers"
+        },
+        {
+          "itemCode": "004",
+          "itemName": "First aid kit user information",
+          "itemDescription": "How to use an aid kit",
+          "itemCategory": "Others"
+        },
+        {
+          "itemCode": "005",
+          "itemName": "El Diario de Ana Frank",
+          "itemDescription": "Story of the life of Ana Frank",
+          "itemCategory": "Books"
+        },
+        {
+          "itemCode": "006",
+          "itemName": "Correo del Sur",
+          "itemDescription": "Newspaper of may 2, 2020",
+          "itemCategory": "Newspapers"
+        }
+      ]
+}
